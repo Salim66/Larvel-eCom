@@ -41,3 +41,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']],function () {
+
+    Route::get('/', function(){
+        return view('admin.index');
+    })->name('admin.index');
+
+    Route::resource('product', ProductController::class);
+
+});
+
