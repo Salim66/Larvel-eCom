@@ -69,5 +69,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']],function (
 
 });
 
-// Route::get('cart/addItem/{id}', [HomeController::class, 'productDetails']);
+Route::get('cart/addItem/{id}', [HomeController::class, 'productDetails']);
+Route::get('cart/remove/{id}', [CartController::class, 'destroy'])->name('cart.remove');
 

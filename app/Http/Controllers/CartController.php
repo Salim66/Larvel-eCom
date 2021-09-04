@@ -25,4 +25,12 @@ class CartController extends Controller
         Cart::add($product->pro_name, $id, 1, $product->pro_price);
         return view('cart.index');
     }
+
+    /**
+     * Remove from cart
+     */
+    public function destroy($id){
+        Cart::remove($id);
+        return redirect()->back();
+    }
 }
