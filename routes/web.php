@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', function(){
+Route::get('/', function(){
     return view('front.home');
 });
 
@@ -32,3 +32,11 @@ Route::get('/products', function() {
 });
 
 // Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
