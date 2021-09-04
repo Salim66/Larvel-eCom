@@ -33,4 +33,15 @@ class CartController extends Controller
         Cart::remove($id);
         return redirect()->back();
     }
+
+    /**
+     * Cart update
+     */
+    public function update(Request $request, $id){
+        echo $id;
+        // echo "<br>";
+        // echo $request->qty;
+        // echo "<br>";
+        // echo $request->pro_qty;
+    }
 }

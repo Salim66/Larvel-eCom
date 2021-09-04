@@ -125,7 +125,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                         <tr>
                             <td class="cart_product">
 
-
+                        {!! Form::open(['method', 'POST', 'route' => ['cart.update', $cartItem->id], 'files' => true]) !!}
 
                          <p><img src="{{url('images/',$cartItem->options->image)}}" class="card-img-top bmw" ></p>
 
@@ -152,16 +152,18 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
 
 
 
-                  <input type="hidden" id="rowId<?php echo $count;?>" value="{{$cartItem->rowId}}"/>
+                                <input type="hidden" id="rowId<?php echo $count;?>" value="{{$cartItem->rowId}}"/>
 
 
-              <input type="hidden" id="proId<?php echo $count;?>" value="{{$cartItem->id}}"/>
+                                <input type="hidden" id="proId<?php echo $count;?>" value="{{$cartItem->id}}"/>
 
 
 
-              <input type="number" size="2" value="{{$cartItem->qty}}" name="qty" id="upCart<?php echo $count;?>"
-                                           autocomplete="off" style="text-align:center; max-width:50px; "  MIN="1" MAX="1000">
+                                <input type="number" size="2" value="{{$cartItem->qty}}" name="qty" id="upCart<?php echo $count;?>"
+                                                            autocomplete="off" style="text-align:center; max-width:50px; "  MIN="1" MAX="1000">
+                                <input type="submit" class="btn btn-primary btn-sm" value="Update" style="margin: 5px;">
 
+                        {!! Form::close() !!}
 
 
 
