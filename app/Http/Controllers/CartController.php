@@ -38,7 +38,7 @@ class CartController extends Controller
      * Cart update
      */
     public function update(Request $request, $id){
-        echo $id;
+        dd($request->qty);
         // echo "<br>";
         // echo $request->qty;
         // echo "<br>";

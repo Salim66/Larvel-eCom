@@ -125,7 +125,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                         <tr>
                             <td class="cart_product">
 
-                        {!! Form::open(['method', 'POST', 'route' => ['cart.update', $cartItem->id], 'files' => true]) !!}
+                        {!! Form::open(['method' => 'PUT', 'route' => ['cart.update', $cartItem->id], 'files' => true]) !!}
 
                          <p><img src="{{url('images/',$cartItem->options->image)}}" class="card-img-top bmw" ></p>
 

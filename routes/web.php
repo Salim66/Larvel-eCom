@@ -71,5 +71,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']],function (
 
 Route::get('cart/addItem/{id}', [HomeController::class, 'productDetails']);
 Route::get('cart/remove/{id}', [CartController::class, 'destroy'])->name('cart.remove');
-Route::post('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::put('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 
