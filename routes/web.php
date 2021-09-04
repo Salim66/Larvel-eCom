@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/home', function(){
     return view('front.home');
 });
+
+Route::get('/shop', function(){
+    return view('front.shop');
+});
