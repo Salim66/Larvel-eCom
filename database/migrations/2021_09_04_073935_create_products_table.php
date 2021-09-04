@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->float('pro_price');
             $table->string('pro_info');
             $table->string('image')->nullable();
-            $table->float('sell_price');
+            $table->float('spl_price');
             $table->timestamps();
         });
     }

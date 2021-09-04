@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+
+        $products = Product::latest()->get();
+        return view('admin.product.index', [
+            'products' => $products
+        ]);
+
     }
 
     /**
@@ -23,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
     /**
@@ -34,7 +40,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->all();
+        $formInput = $request->except('image'); // ignore image
+
+        $this->validate($request, [
+            'pro_name'   => 'required',
+            'pro_code'   => 'required',
+            'pro_price'  => 'required',
+            'pro_info'   => 'required',
+            'spl_price'  => 'required',
+            'image'      => 'image|mimes:png,jpg,jpeg|max:10000'
+        ]);
+
+
+        if($request->hasFile('image')){
+            $image  = $request->file('image');
+            $unique_file_name = md5(time().rand()).'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('images/'), $unique_file_name);
+            $formInput['image'] = $unique_file_name;
+        }
+
+        Product::create($formInput);
+        return redirect()->back();
+
     }
 
     /**
@@ -45,7 +73,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        return view('admin.product.show', compact('product'));
     }
 
     /**
