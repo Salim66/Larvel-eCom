@@ -26,7 +26,17 @@ class HomeController extends Controller
         return view('front.home');
     }
 
+    /**
+     * Shope page
+     */
     public function shop(){
         return view('front.shop');
+    }
+
+    /**
+     * Contact page
+     */
+    public function contact(){
+        return view('front.contact');
     }
 }
