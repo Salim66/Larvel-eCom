@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,11 @@ Route::get('/shop', function(){
 });
 
 Route::get('/products', function() {
-    return view('front.shop');
+    $products = Product::latest()->get();
+    return view('front.shop', compact('products'));
 });
+
+Route::get('shop', [HomeController::class, 'shop'])->name('shop');
 
 // Route::get('/contact', function() {
 //     return view('front.contact');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -30,7 +31,8 @@ class HomeController extends Controller
      * Shope page
      */
     public function shop(){
-        return view('front.shop');
+        $products = Product::latest()->get();
+        return view('front.shop', compact('products'));
     }
 
     /**

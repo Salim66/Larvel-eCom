@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -56,6 +57,7 @@ class ProductController extends Controller
         if($request->hasFile('image')){
             $image  = $request->file('image');
             $unique_file_name = md5(time().rand()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(300, 200)->save('images/'.$unique_file_name);
             $image->move(public_path('images/'), $unique_file_name);
             $formInput['image'] = $unique_file_name;
         }
