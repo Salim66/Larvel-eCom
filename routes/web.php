@@ -27,4 +27,8 @@ Route::get('/shop', function(){
     return view('front.shop');
 });
 
+Route::get('/products', function() {
+    return view('front.shop');
+});
+
 // Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
