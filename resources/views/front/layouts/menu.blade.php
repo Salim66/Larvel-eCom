@@ -16,15 +16,17 @@
           <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+              @if(Auth::check())
+                <a class="dropdown-item" href="#">{{ Auth::user()->name; }}</a>
+                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+              @else
+                <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+              @endif
           </div>
         </li>
       </ul>
-      <li class="list-unstyled list-inline-item"><a class="text-decoration-none mr-3" href="{{ route('login') }}">Login</a></li>
       <li class="list-unstyled list-inline-item"><a class="text-decoration-none mr-3" href="{{ route('cart') }}"><i class="fab fa-shopping-cart">View Cart</i>({{ Cart::count() }}) ({{ Cart::total() }})</a></li>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

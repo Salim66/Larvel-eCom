@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
@@ -69,7 +70,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']],function (
 
 });
 
-Route::get('cart/addItem/{id}', [HomeController::class, 'productDetails']);
+// Route::get('cart/addItem/{id}', [HomeController::class, 'productDetails']);
 Route::get('cart/remove/{id}', [CartController::class, 'destroy'])->name('cart.remove');
 Route::put('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
