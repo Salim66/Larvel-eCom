@@ -41,4 +41,13 @@ class HomeController extends Controller
     public function contact(){
         return view('front.contact');
     }
+
+    /**
+     * Product details page
+     */
+    public function productDetails($id){
+        $product = Product::findOrFail($id);
+        return view('front.product_details', compact('product'));
+    }
+
 }

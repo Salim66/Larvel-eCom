@@ -36,6 +36,9 @@ Route::get('/products', function() {
 });
 
 Route::get('shop', [HomeController::class, 'shop'])->name('shop');
+Route::get('product_details/{id}', [HomeController::class, 'productDetails'])->name('product.details');
+
+
 
 // Route::get('/contact', function() {
 //     return view('front.contact');
