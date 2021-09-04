@@ -22,6 +22,7 @@ class CartController extends Controller
     public function addItem($id){
 
         $product = Product::findOrFail($id);
-        Cart::add($product->pro_name, $id, 1, $product->price);
+        Cart::add($product->pro_name, $id, 1, $product->pro_price);
+        return view('cart.index');
     }
 }

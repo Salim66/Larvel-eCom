@@ -25,6 +25,7 @@
         </li>
       </ul>
       <li class="list-unstyled list-inline-item"><a class="text-decoration-none mr-3" href="{{ route('login') }}">Login</a></li>
+      <li class="list-unstyled list-inline-item"><a class="text-decoration-none mr-3" href="{{ route('cart') }}"><i class="fab fa-shopping-cart">View Cart</i>({{ Cart::count() }}) ({{ Cart::total() }})</a></li>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

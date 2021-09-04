@@ -1,7 +1,9 @@
 @extends('front.layouts.master')
 
 @section('content')
-
+<br>
+<br>
+<br>
 <script src="{{asset('dist/js/jquery.js')}}"></script>
 <script>
 $(document).ready(function(){
@@ -44,7 +46,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
   <?php } ?>
 });
 </script>
-<?php if ($cartItems->isEmpty()) { ?>
+<?php if (@$cartItems == null) { ?>
 <br>
 <br>
 <br>
@@ -118,14 +120,14 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                  </thead>
 
                     <?php $count =1;?>
-                    @foreach($cartItems as $cartItem)
+                    @foreach(@$cartItems as $cartItem)
                     <tbody>
                         <tr>
                             <td class="cart_product">
 
 
 
-                         <p><img src="{{url('images',$cartItem->options->img)}}" class="card-img-top bmw" ></p>
+                         <p><img src="{{url('images/',$cartItem->options->image)}}" class="card-img-top bmw" ></p>
 
 
 
@@ -172,7 +174,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                             <td class="cart_delete">
                                <button class="btn btn-primary">
                                 <a class="cart_quantity_delete" style="background-color:red"
-                                   href="{{url('/cart/remove')}}/{{$cartItem->rowId}}"><i class="fa fa-times"></i></a>
+                                   href="{{url('/cart/remove')}}/{{$cartItem->rowId}}"><i class="fa fa-times">Remove</i></a>
                                    </button>
                             </td>
                         </tr>

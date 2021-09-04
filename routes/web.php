@@ -39,8 +39,8 @@ Route::get('/products', function() {
 Route::get('shop', [HomeController::class, 'shop'])->name('shop');
 Route::get('product_details/{id}', [HomeController::class, 'productDetails'])->name('product.details');
 
-Route::get('cart', [CartController::class, 'index']);
-Route::get('cart/addItem/{id}', [CartController::class, 'addItem']);
+Route::get('cart', [CartController::class, 'index'])->name('cart');
+Route::get('cart/addItem/{id}', [CartController::class, 'addItem'])->name('cart.addItem');
 
 
 
