@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ Route::get('/home', function(){
 Route::get('/shop', function(){
     return view('front.shop');
 });
+
+// Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
