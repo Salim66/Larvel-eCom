@@ -24,6 +24,18 @@
               @else
                 <a class="dropdown-item" href="{{ route('login') }}">Login</a>
               @endif
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                  <?php  $cats = DB::table('categories')->get(); ?>
+                     @foreach($cats as $cat)
+                  <a class="dropdown-item" href="{{url('/')}}/products/{{$cat->name}}">{{ucwords($cat->name)}}</a>
+
+                   @endforeach
+
+                </div>
+              </li>
           </div>
         </li>
       </ul>

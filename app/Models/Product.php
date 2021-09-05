@@ -11,4 +11,12 @@ class Product extends Model
 
     protected $guarded = [];
 
+    public function categories(){
+        return $this->belongsToMany('App\Models\Category', 'categories');
+    }
+
+    public function category(){
+        return $this->belongsTo('App\Models\Category');
+    }
+
 }

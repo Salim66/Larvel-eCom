@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -24,15 +25,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('front.home');
+        $products   = Product::latest()->get();
+        $categories = Category::latest()->get();
+        return view('front.home', compact('products', 'categories'));
     }
 
     /**
      * Shope page
      */
     public function shop(){
-        $products = Product::latest()->get();
-        return view('front.shop', compact('products'));
+        $products   = Product::latest()->get();
+        $categories = Category::latest()->get();
+        return view('front.shop', compact('products', 'categories'));
     }
 
     /**
