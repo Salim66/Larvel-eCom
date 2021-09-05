@@ -20,8 +20,16 @@
 
     @include('admin.admin_header')
 
-    @section('content')
-    @show
+    <div class="container-fluid">
+        <div class="row">
+            @include('admin.layouts.sidebar')
+            @section('content')
+            @show
+        </div>
+    </div>
+
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
