@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -69,6 +70,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']],function (
 
 
     Route::resource('product', ProductController::class);
+    Route::resource('category', CategoryController::class);
 
 });
 
