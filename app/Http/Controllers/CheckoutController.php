@@ -47,12 +47,13 @@ class CheckoutController extends Controller
         ]);
 
         Address::create([
-            'fullname'  => $request->fullname,
-            'state'     => $request->state,
-            'pincode'   => $request->pincode,
-            'city'      => $request->city,
-            'country'   => $request->country,
-            'user_id'   => Auth::id(),
+            'fullname'      => $request->fullname,
+            'state'         => $request->state,
+            'pincode'       => $request->pincode,
+            'city'          => $request->city,
+            'country'       => $request->country,
+            'payment_type'  => $request->pay,
+            'user_id'       => Auth::id(),
         ]);
         // dd("done");
         Order::createOrder();

@@ -5,34 +5,37 @@ namespace App\Models;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Order extends Model
+class order extends Model
 {
-    use HasFactory;
+    //
+    protected $fillable = ['total', 'status'];
 
-    protected $guarded = [];
 
-    public function orderFields(){
-        return $this->belongsToMany('App\Models\Product')->withPivot('qty', 'total');
+    public function orderFields() {
+       return $this->belongsToMany(Product::class)->withPivot('qty', 'total');
     }
 
-    public static function createOrder(){
-        // for order insert to database
-        // dd("order done");
+    public static function createOrder() {
 
-        $user   = Auth::user();
-        $order  = $user->orders()->create([
-            'total'     => Cart::total(),
-            'status'    => 'pending'
-        ]);
+        // for order inserting to database
 
-        $cartItems  = Cart::content();
+           // echo 'order done';
 
-        foreach ($cartItems as $cartItem) {
-            $order->orderFields()->attach($cartItem->id, ['qty' => $cartItem->qty, 'txt' => $cartItem->tax(), 'total' => $cartItem->qty * $cartItem->pro_price]);
+          $user = Auth::user();
+          $order = $user->orders()->create(['total' => Cart::total(), 'status' => 'pending']);
+
+         $cartItems = Cart::content();
+
+         foreach ($cartItems as $cartItem) {
+            OrderProduct::create([
+                'order_id'      => $order->id,
+                'product_id'    => $cartItem->id,
+                'qty'           => $cartItem->qty,
+                'tax'           => $cartItem->tax(),
+                'total'         => ($cartItem->qty * $cartItem->price)
+            ]);
         }
-
-    }
+     }
 
 }

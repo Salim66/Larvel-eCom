@@ -173,7 +173,7 @@
 
                         <span>
                         <input type="radio" name="pay" value="paypal"> PayPal
-                         @include('front.paypal')
+                         {{-- @include('front.paypal') --}}
                         </span>
 
 

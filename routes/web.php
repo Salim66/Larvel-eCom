@@ -83,8 +83,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/checkout', [CheckoutController::class, 'index']);
     Route::post('/formvalidate', [CheckoutController::class, 'formvalidate']);
     Route::get('/orders', [ProfileController::class, 'orders']);
+    Route::get('/address', [ProfileController::class, 'address']);
 
-    Route::get('thankyou', function(){
+    Route::get('/thankyou', function(){
         return view('profile.thankyou');
     })->name('profile.thankyou');
 });
