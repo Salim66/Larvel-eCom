@@ -34,6 +34,11 @@
                             </div>
 
                             <div class="form-group">
+                                {!! Form::label('category_id', 'categories') !!}
+                                {!! Form::select('category_id', $categories, null, ['class' => 'form-control', 'placeholder' => 'Select Category']) !!}
+                            </div>
+
+                            <div class="form-group">
                                 {!! Form::label('image', 'Image') !!}
                                 {!! Form::file('image', ['class' => 'form-control-file']) !!}
                             </div>

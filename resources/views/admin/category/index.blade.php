@@ -1,4 +1,4 @@
-@extends('admin.layouts.master')
+@extends('front.layouts.master')
 @section('content')
 
 
@@ -64,7 +64,7 @@
                                     @endif</td>
 
 
-            {!! Form::open(['method'=>'DELETE', 'action'=> ['CategoriesController@destroy', $category->id]]) !!}
+            {!! Form::open(['method'=>'DELETE', 'action'=> ['App\Http\Controllers\CategoryController@destroy', $category->id]]) !!}
 
 
                 <td>  {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}</td>

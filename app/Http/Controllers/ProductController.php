@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -30,7 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $categories = Category::pluck('name', 'id');
+        return view('admin.product.create', compact('categories'));
     }
 
     /**
@@ -61,6 +63,8 @@ class ProductController extends Controller
             $image->move(public_path('images/'), $unique_file_name);
             $formInput['image'] = $unique_file_name;
         }
+
+        $categories = Category::all();
 
         Product::create($formInput);
         return redirect()->back();

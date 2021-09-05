@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('pro_code');
             $table->float('pro_price');
             $table->string('pro_info');
+            $table->integer('category_id');
             $table->string('image')->nullable();
             $table->float('spl_price');
             $table->timestamps();
