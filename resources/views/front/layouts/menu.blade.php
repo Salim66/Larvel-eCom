@@ -20,6 +20,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdown01">
               @if(Auth::check())
                 <a class="dropdown-item" href="#">{{ Auth::user()->name; }}</a>
+                <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
               @else
                 <a class="dropdown-item" href="{{ route('login') }}">Login</a>

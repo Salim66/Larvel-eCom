@@ -76,5 +76,12 @@ Route::get('cart/remove/{id}', [CartController::class, 'destroy'])->name('cart.r
 Route::put('cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/checkout', [CheckoutController::class, 'index']);
-Route::post('/formvalidate', [CheckoutController::class, 'formvalidate']);
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/checkout', [CheckoutController::class, 'index']);
+    Route::post('/formvalidate', [CheckoutController::class, 'formvalidate']);
+    Route::get('thankyou', function(){
+        return view('profile.thankyou');
+    })->name('profile.thankyou');
+});

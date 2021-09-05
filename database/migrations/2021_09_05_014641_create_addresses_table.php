@@ -19,6 +19,7 @@ class CreateAddressesTable extends Migration
             $table->string('state');
             $table->string('city');
             $table->string('country');
+            $table->string('payment_type');
             $table->unsignedBigInteger('user_id');
             $table->integer('pincode');
             $table->timestamps();

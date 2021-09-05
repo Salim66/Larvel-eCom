@@ -18,7 +18,7 @@
     </section>
     <!-- Checout Forms-->
     <div class="table-responsive cart_info">
-                {{-- <table class="table table-condensed">
+                <table class="table table-condensed">
                     <thead>
                         <tr class="cart_menu">
                             <td class="image">Item</td>
@@ -80,7 +80,7 @@
 
     <?php $count++;?>
                     </tbody>  @endforeach
-                </table> --}}
+                </table>
             </div>
 
 
@@ -173,7 +173,7 @@
 
                         <span>
                         <input type="radio" name="pay" value="paypal"> PayPal
-                         {{-- @include('front.paypal') --}}
+                         @include('front.paypal')
                         </span>
 
 

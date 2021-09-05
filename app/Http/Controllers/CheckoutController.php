@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
 use App\Models\Order;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
 {
@@ -14,7 +15,8 @@ class CheckoutController extends Controller
      */
     public function index(){
         if(Auth::check()){
-            return view('front.checkout');
+            $cartItems = Cart::content();
+            return view('front.checkout', compact('cartItems'));
         }else {
             return redirect()->route('login');
         }
@@ -54,6 +56,9 @@ class CheckoutController extends Controller
         ]);
         // dd("done");
         Order::createOrder();
+
+        Cart::destroy();
+        return redirect()->route('profile.thankyou');
 
     }
 
