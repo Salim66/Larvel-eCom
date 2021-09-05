@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,7 +52,8 @@ class CheckoutController extends Controller
             'country'   => $request->country,
             'user_id'   => Auth::id(),
         ]);
-        dd("done");
+        // dd("done");
+        Order::createOrder();
 
     }
 
