@@ -77,3 +77,4 @@ Route::put('cart/update/{id}', [CartController::class, 'update'])->name('cart.up
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/checkout', [CheckoutController::class, 'index']);
+Route::post('/formvalidate', [CheckoutController::class, 'formvalidate']);

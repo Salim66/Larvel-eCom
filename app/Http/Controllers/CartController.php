@@ -23,7 +23,7 @@ class CartController extends Controller
 
         $product = Product::findOrFail($id);
         Cart::add($product->pro_name, $id, 1, $product->pro_price);
-        return view('cart.index');
+        return redirect()->route('cart');
     }
 
     /**
