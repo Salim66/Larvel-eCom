@@ -46,7 +46,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
   <?php } ?>
 });
 </script>
-<?php if (@$cartItems == null) { ?>
+<?php if (empty($cartItems)) { ?>
 <br>
 <br>
 <br>
@@ -58,7 +58,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                     <li class="active">Shopping Cart</li>
                 </ol>
             </div>
-            <div align="center">  <img src="{{asset('dist/img/empty-cart.png')}}"/></div>
+            <div align="center">  <img src="{{asset('front/assets/dist/img/empty-cart.png')}}"/></div>
         </div>
     </section> <!--/#cart_items-->
 <?php } else { ?>
@@ -177,7 +177,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                                <button class="btn btn-primary">
                                 <a class="cart_quantity_delete" style="background-color:red"
                                    href="{{ route('cart.remove', $cartItem->rowId) }}"><i class="fa fa-times">Remove</i></a>
-                                   </button>
+                                </button>
                             </td>
                         </tr>
 
@@ -257,10 +257,10 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Cart Sub Total <span>${{$cartItem->subtotal}}</span></li>
+                            <li>Cart Sub Total <span>${{@$cartItem->subtotal}}</span></li>
                             <li>Eco Tax <span>${{Cart::tax()}}</span></li>
                             <li>Shipping Cost <span>Free</span></li>
-                            <li>Total <span>${{$cartItem->total}}</span></li>
+                            <li>Total <span>${{@$cartItem->total}}</span></li>
                         </ul>
                         <a class="btn btn-default update" href="">Update</a>
                         <a class="btn btn-default check_out" href="{{url('/')}}/checkout">Check Out</a>

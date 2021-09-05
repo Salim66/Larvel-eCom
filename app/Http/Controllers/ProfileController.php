@@ -28,15 +28,26 @@ class ProfileController extends Controller
      * Profile address
      */
     public function address(){
-        return view('profile.address');
+        $address_data   = DB::table('addresses')->where('user_id', Auth::id())->orderBy('id', 'DESC')->get();
+        // dd($address_data);
+        return view('profile.address', compact('address_data'));
     }
 
     /**
      * Update address
      */
     public function updateAddress(Request $request){
-        echo "here update query for address";
-        dd($request);
+        $this->validate($request, [
+            'fullname'  => 'required|min:5|max:30',
+            'pincode'   => 'required|numeric',
+            'city'      => 'required|min:3|max:25',
+            'state'     => 'required|min:3|max:35',
+            'country'   => 'required|min:3|max:35'
+        ]);
+
+        DB::table('addresses')->where('id', Auth::id())->update($request->all());
+
+        return redirect()->back()->with('msg', 'Your address has been updated!');
     }
 
     /**
