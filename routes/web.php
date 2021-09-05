@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Product;
 
 /*
@@ -81,6 +82,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/checkout', [CheckoutController::class, 'index']);
     Route::post('/formvalidate', [CheckoutController::class, 'formvalidate']);
+    Route::get('/orders', [ProfileController::class, 'orders']);
+
     Route::get('thankyou', function(){
         return view('profile.thankyou');
     })->name('profile.thankyou');
