@@ -17,6 +17,9 @@
         <div class="product-information">
             <img src="" alt="">
             <p><?php echo ucwords($product->pro_name); ?></p>
+            <button class="btn btn-primary btn-sm text-light">
+                <a href="{{ route('cart.addItem', $product->id) }}" class="add-to-cart text-light">Add To Cart</a>
+            </button>
         </div>
     </div>
 </div>
