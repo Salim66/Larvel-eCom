@@ -30,4 +30,27 @@ class ProfileController extends Controller
     public function address(){
         return view('profile.address');
     }
+
+    /**
+     * Update address
+     */
+    public function updateAddress(Request $request){
+        echo "here update query for address";
+        dd($request);
+    }
+
+    /**
+     * update password
+     */
+    public function password(){
+        return view('profile.updatePassword');
+    }
+
+    /**
+     * Update password page
+     */
+    public function updatePassword(){
+
+        return view('profile.updatePassword');
+    }
 }
