@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -60,8 +61,17 @@ class ProfileController extends Controller
     /**
      * Update password page
      */
-    public function updatePassword(){
+    public function updatePassword(Request $request){
 
-        return view('profile.updatePassword');
+        $old_password = $request->oldPassword;
+        $new_password = $request->newPassword;
+
+        if(!Hash::check($old_password, Auth::user()->password)){
+            return back()->with('msg', 'Password does not match our record, Please try again!');
+        }else {
+            $request->user()->file('password', Hash::make($new_password))->save();
+            return redirect()->back()->with('msg', 'Password has been updated');
+        }
+
     }
 }
