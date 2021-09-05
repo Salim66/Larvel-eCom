@@ -171,10 +171,10 @@
                        <input type="radio" name="pay" value="COD" checked="checked"> COD
                           </span>
 
-                        <span>
+                        {{-- <span>
                         <input type="radio" name="pay" value="paypal"> PayPal
-                         {{-- @include('front.paypal') --}}
-                        </span>
+                         @include('front.paypal')
+                        </span> --}}
 
 
                        <span>
@@ -189,6 +189,10 @@
 
                   </div>
                 </form>
+                <span>
+                    <input type="radio" name="pay" value="paypal"> PayPal
+                     @include('front.paypal')
+                    </span>
 
 
                 <div class="CTAs d-flex justify-content-between flex-column flex-lg-row"><a href="cart.html" class="btn btn-template-outlined wide prev"> <i class="fa fa-angle-left"></i>Back to basket</a><a href="checkout2.html" class="btn btn-template wide next">Choose delivery method<i class="fa fa-angle-right"></i></a></div>
